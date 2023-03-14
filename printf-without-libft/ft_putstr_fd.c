@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vparlak <vparlak@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/14 16:41:30 by vparlak           #+#    #+#             */
-/*   Updated: 2022/12/21 19:12:34 by vparlak          ###   ########.fr       */
+/*   Created: 2022/12/29 04:26:37 by vparlak           #+#    #+#             */
+/*   Updated: 2023/03/14 12:03:44 by vparlak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+int	ft_putstr_fd(char *s, int fd)
 {
-	size_t	len_src;
-	size_t	len_dst;
+	int	count;
 
-	len_src = ft_strlen(src);
-	len_dst = ft_strlen(dst);
-	if (dstsize <= len_dst)
-		return (dstsize + len_src);
-	dst += len_dst;
-	ft_strlcpy(dst, src, (dstsize - len_dst));
-	return (len_src + len_dst);
+	count = 0;
+	while (*s)
+		count += ft_putchar_fd(*s++, fd);
+	return (count);
 }

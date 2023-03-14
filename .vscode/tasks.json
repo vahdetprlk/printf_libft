@@ -8,11 +8,12 @@
                 "-fdiagnostics-color=always",
                 "-g",
                 "${file}",
+                "ft_printf.c",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}",
-                "libft_h/libft.a",
-                "libftprintf.a",
-                "main.c"
+                "-Ilibft",
+                "-lft",
+                "-Llibft"
             ],
             "options": {
                 "cwd": "${fileDirname}"

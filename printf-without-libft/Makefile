@@ -1,24 +1,25 @@
-NAME	= libft.a
+NAME	= libftprintf.a
 
 CC		= gcc
 CFLAGS	= -Wall -Wextra -Werror
 
-FILES	= $(shell find . -type f ! -name "ft_lst*.c" -name "ft_*.c")
+FILES	= $(shell find . -type f ! -name "ft_*_bonus.c" -name "ft_*.c")
 OBJ		= $(FILES:%.c=%.o)
 
-BSRC	= $(shell find . -type f -name "ft_lst*.c")
+BSRC	= $(shell find . -type f -name "ft_*_bonus.c")
 B_OBJ	= $(BSRC:%.c=%.o)
+
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	@ar -rc $(NAME) $(OBJ)
 
-bonus: $(OBJ) $(B_OBJ)
+bonus: all $(B_OBJ)
 	@ar -rc $(NAME) $(OBJ) $(B_OBJ)
 
 clean:
-	@rm -f *.o
+	@rm -f $(OBJ) $(B_OBJ)
 
 fclean: clean
 	@rm -f $(NAME)

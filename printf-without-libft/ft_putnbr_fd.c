@@ -6,29 +6,28 @@
 /*   By: vparlak <vparlak@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 04:44:49 by vparlak           #+#    #+#             */
-/*   Updated: 2023/03/12 22:08:46 by vparlak          ###   ########.fr       */
+/*   Updated: 2023/03/14 12:03:19 by vparlak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
 int	ft_putnbr_fd(long n, int fd)
 {
-	long		nbr;
-	static int	count = 0;
+	long	nbr;
+	int		count;
 
-	nbr = (long)n;
+	count = 0;
+	nbr = n;
 	if (nbr < 0)
 	{
-		nbr = -nbr;
 		count += ft_putchar_fd('-', fd);
+		nbr = -nbr;
 	}
-	if (nbr < 10)
-		count += ft_putchar_fd(nbr + '0', fd);
-	if (nbr > 9)
+	if (nbr >= 10)
 	{
-		ft_putnbr_fd(nbr / 10, fd);
-		ft_putnbr_fd(nbr % 10, fd);
+		count += ft_putnbr_fd(nbr / 10, fd);
 	}
+	count += ft_putchar_fd(nbr % 10 + '0', fd);
 	return (count);
 }

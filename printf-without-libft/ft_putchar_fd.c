@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vparlak <vparlak@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 19:05:19 by vparlak           #+#    #+#             */
-/*   Updated: 2023/03/13 13:57:58 by vparlak          ###   ########.fr       */
+/*   Created: 2022/12/29 03:45:18 by vparlak           #+#    #+#             */
+/*   Updated: 2023/03/14 12:03:25 by vparlak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include "libft/libft.h"
-# include <stdarg.h>
-# include <unistd.h>
-# include <stdio.h>
+#include "ft_printf.h"
 
-int		ft_printf(const char *format, ...);
-void	ft_print_any(va_list args, char *format, int *count);
-void	ft_print_any_2(va_list args, char *format, int *count);
-char	*ft_check_specifier(const char *format, va_list args, int *count);
-
-#endif
+int	ft_putchar_fd(char c, int fd)
+{
+	return (write(fd, &c, 1));
+}

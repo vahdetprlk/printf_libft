@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vparlak <vparlak@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 19:05:19 by vparlak           #+#    #+#             */
-/*   Updated: 2023/03/13 13:57:58 by vparlak          ###   ########.fr       */
+/*   Created: 2022/12/15 16:34:49 by vparlak           #+#    #+#             */
+/*   Updated: 2023/03/14 12:03:05 by vparlak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include "libft/libft.h"
-# include <stdarg.h>
-# include <unistd.h>
-# include <stdio.h>
+#include "ft_printf.h"
 
-int		ft_printf(const char *format, ...);
-void	ft_print_any(va_list args, char *format, int *count);
-void	ft_print_any_2(va_list args, char *format, int *count);
-char	*ft_check_specifier(const char *format, va_list args, int *count);
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	unsigned char	str1;
+	unsigned char	str2;
 
-#endif
+	while (n-- && (*s1 || *s2))
+	{
+		str1 = (unsigned char)*s1++;
+		str2 = (unsigned char)*s2++;
+		if (str1 != str2)
+			return (str1 - str2);
+	}
+	return (0);
+}
